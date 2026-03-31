@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>江南踏春季 · 四日自驾游攻略</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f3;
+      --bg-card: #ffffff;
+      --text: #1a1814;
+      --text-secondary: #6b6358;
+      --text-muted: #9c9489;
+      --border: #e8e4dc;
+      --accent: #c67b4e;
+      --accent-light: #f0e0d4;
+      --accent-dark: #9e5c32;
+      --green: #5a8a6e;
+      --green-light: #d4e8dc;
+      --blue: #4a7a9b;
+      --blue-light: #d4e4f0;
+      --red: #b85450;
+      --red-light: #f0d4d4;
+      --shadow: 0 2px 12px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+      --radius: 16px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #f5f0e8 0%, #e8e0d4 40%, #d4c8b8 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 80%, rgba(198,123,78,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 80% 20%, rgba(90,138,110,0.10) 0%, transparent 70%);
+    }
+
+    .hero-content {
+      text-align: center;
+      z-index: 2;
+      padding: 2rem;
+      max-width: 760px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(198,123,78,0.2);
+    }
+
+    .hero h1 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      border: 1px solid var(--border);
+    }
+
+    .hero-meta-item svg { color: var(--accent); flex-shrink: 0; }
+
+    .hero-dates {
+      display: inline-flex;
+      align-items: center;
+      background: var(--text);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 14px 32px;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,248,243,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding: 0.75rem 0;
+      scrollbar-width: none;
+    }
+
+    .nav-inner::-webkit-scrollbar { display: none; }
+
+    .nav-item {
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      color: var(--accent);
+      background: var(--accent-light);
+      border-color: rgba(198,123,78,0.2);
+    }
+
+    /* Sections */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+    }
+
+    /* Route Overview */
+    .route-timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .route-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+      transform: translateX(-50%);
+    }
+
+    @media (max-width: 768px) {
+      .route-timeline::before { left: 24px; }
+    }
+
+    .route-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .route-item:nth-child(odd) { flex-direction: row; }
+    .route-item:nth-child(even) { flex-direction: row-reverse; }
+
+    @media (max-width: 768px) {
+      .route-item, .route-item:nth-child(even) { flex-direction: row; }
+    }
+
+    .route-dot {
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+
+    @media (max-width: 768px) {
+      .route-dot { left: 24px; }
+    }
+
+    .route-card {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      max-width: calc(50% - 2rem);
+    }
+
+    @media (max-width: 768px) {
+      .route-card { max-width: calc(100% - 56px); margin-left: 48px; }
+    }
+
+    .route-date {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .route-place {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .route-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    .route-distance {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      background: var(--accent-light);
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    .route-spacer {
+      flex: 1;
+      max-width: calc(50% - 2rem);
+    }
+
+    @media (max-width: 768px) {
+      .route-spacer { display: none; }
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 4rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .stat-value {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .stat-unit {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* Day Cards */
+    .day-grid { display: flex; flex-direction: column; gap: 2rem; }
+
+    .day-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s;
+    }
+
+    .day-card:hover { box-shadow: var(--shadow-lg); }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(135deg, #faf8f3, #f5f0e8);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .day-number {
+      width: 52px;
+      height: 52px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .day-number small {
+      font-size: 0.65rem;
+      font-weight: 400;
+      opacity: 0.85;
+      letter-spacing: 0.05em;
+    }
+
+    .day-title-group { flex: 1; }
+
+    .day-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .day-subtitle {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .day-body { padding: 1.75rem 2rem; }
+
+    .time-block {
+      position: relative;
+      padding-left: 2rem;
+      padding-bottom: 1.75rem;
+    }
+
+    .time-block:last-child { padding-bottom: 0; }
+
+    .time-block::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 28px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .time-block:last-child::before { display: none; }
+
+    .time-block::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent-light);
+    }
+
+    .time-block.green::after { background: var(--green); box-shadow: 0 0 0 2px var(--green-light); }
+    .time-block.blue::after { background: var(--blue); box-shadow: 0 0 0 2px var(--blue-light); }
+    .time-block.red::after { background: var(--red); box-shadow: 0 0 0 2px var(--red-light); }
+
+    .time-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .time-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .time-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      border: 1px solid rgba(198,123,78,0.2);
+    }
+
+    .tag.green { background: var(--green-light); color: var(--green); border-color: rgba(90,138,110,0.2); }
+    .tag.blue { background: var(--blue-light); color: var(--blue); border-color: rgba(74,122,155,0.2); }
+    .tag.red { background: var(--red-light); color: var(--red); border-color: rgba(184,84,80,0.2); }
+
+    /* Packing */
+    .packing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .packing-cat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .packing-cat-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .packing-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 0;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .packing-item:last-child { border-bottom: none; }
+
+    .packing-check {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+    }
+
+    /* Tips */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .tip-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .tip-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .tip-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .tip-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Divider */
+    .section-divider {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-divider hr {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Gas calculation */
+    .gas-section {
+      background: linear-gradient(135deg, #1a1814, #2d2820);
+      border-radius: 20px;
+      padding: 2.5rem;
+      color: #fff;
+      margin-bottom: 3rem;
+    }
+
+    .gas-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .gas-desc {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.75rem;
+    }
+
+    .gas-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .gas-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .gas-bar-label {
+      width: 180px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      flex-shrink: 0;
+    }
+
+    .gas-bar-track {
+      flex: 1;
+      height: 10px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .gas-bar-fill {
+      height: 100%;
+      border-radius: 100px;
+      transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gas-bar-value {
+      width: 80px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-align: right;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .gas-note {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: rgba(255,255,255,0.07);
+      border-radius: 12px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container { padding: 0 1.25rem; }
+      .day-body { padding: 1.25rem; }
+      .day-header { padding: 1.25rem; }
+      .section { padding: 3rem 0; }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Hotel highlight */
+    .hotel-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green-light);
+      color: var(--green);
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(90,138,110,0.2);
+      margin-top: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .hotel-link:hover { background: var(--green); color: #fff; }
+
+    .address-card {
+      background: #f8f6f1;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .address-card svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+
+    .note-box {
+      background: #fffbf0;
+      border: 1px solid #f0e0b0;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      color: #8a7030;
+      margin-top: 0.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .note-box svg { flex-shrink: 0; margin-top: 2px; }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="currentColor"/></svg>
+      2026年4月3日—6日
+    </div>
+    <h1>江南踏春季<br><em>四日自驾游攻略</em></h1>
+    <p class="hero-sub">从临沂出发，穿越苏州的园林雅韵与乌镇的水乡诗意，一路向南，赴一场江南的春日之约。</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        自驾燃油车
+      </div>
+      <div class="hero-meta-item">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
+        4城 · 4日 · 3晚
+      </div>
+      <div class="hero-meta-item">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 17H7A5 5 0 0 1 7 7h2M15 7h2a5 5 0 0 1 0 10h-2M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        总里程约 1,273 km
+      </div>
+    </div>
+    <div class="hero-dates">🗓 4月3日 — 4月6日</div>
+  </div>
+  <div class="scroll-hint">
+    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    向下滚动查看详情
+  </div>
+</section>
+
+<!-- STICKY NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-item active" onclick="scrollToSection('overview')">行程概览</a>
+    <a class="nav-item" onclick="scrollToSection('stats')">关键数据</a>
+    <a class="nav-item" onclick="scrollToSection('day1')">Day1 · 4/3</a>
+    <a class="nav-item" onclick="scrollToSection('day2')">Day2 · 4/4</a>
+    <a class="nav-item" onclick="scrollToSection('day3')">Day3 · 4/5</a>
+    <a class="nav-item" onclick="scrollToSection('day4')">Day4 · 4/6</a>
+    <a class="nav-item" onclick="scrollToSection('packing')">行李清单</a>
+    <a class="nav-item" onclick="scrollToSection('tips')">实用贴士</a>
+  </div>
+</nav>
+
+<!-- ROUTE OVERVIEW -->
+<section class="section" id="overview">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Route Overview</div>
+      <h2 class="section-title">行程路线总览</h2>
+      <p class="section-desc">四天三晚，跨越两个省份，从齐鲁大地到江南水乡，全程约 1,273 公里。</p>
+    </div>
+
+    <div class="route-timeline">
+      <div class="route-item">
+        <div class="route-dot"></div>
+        <div class="route-card">
+          <div class="route-date">DAY 1 · 4月3日</div>
+          <div class="route-place">临沂 → 高速服务区（夜宿）</div>
+          <div class="route-desc">下午出发，走G2京沪高速，中途服务区休息过夜</div>
+          <div class="route-distance">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            约 340 km 行驶
+          </div>
+        </div>
+        <div class="route-spacer"></div>
+      </div>
+
+      <div class="route-item">
+        <div class="route-dot"></div>
+        <div class="route-spacer"></div>
+        <div class="route-card">
+          <div class="route-date">DAY 2 · 4月4日</div>
+          <div class="route-place">苏州（拙政园）→ 常熟</div>
+          <div class="route-desc">拙政园汉服游览，傍晚前往常熟入住果庭酒店</div>
+          <div class="route-distance">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            约 83 km 行驶
+          </div>
+        </div>
+      </div>
+
+      <div class="route-item">
+        <div class="route-dot"></div>
+        <div class="route-card">
+          <div class="route-date">DAY 3 · 4月4日傍晚—4月5日</div>
+          <div class="route-place">常熟 → 乌镇西栅</div>
+          <div class="route-desc">上午常熟自由活动，下午前往乌镇西栅，夜游水乡夜景</div>
+          <div class="route-distance">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            约 80 km 行驶
+          </div>
+        </div>
+        <div class="route-spacer"></div>
+      </div>
+
+      <div class="route-item">
+        <div class="route-dot"></div>
+        <div class="route-spacer"></div>
+        <div class="route-card">
+          <div class="route-date">DAY 4 · 4月6日</div>
+          <div class="route-place">乌镇 → 临沂（出发地）</div>
+          <div class="route-desc">上午乌镇附近游览，午后返程，傍晚到家</div>
+          <div class="route-distance">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            约 660 km 行驶
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- STATS -->
+<section class="section" id="stats">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Key Numbers</div>
+      <h2 class="section-title">关键数据</h2>
+    </div>
+
+    <!-- Fuel Section -->
+    <div class="gas-section">
+      <div class="gas-title">燃油消耗分析</div>
+      <div class="gas-desc">车辆标称续航 750km · 实际按约 75 折计算 · 建议中途加油 1 次</div>
+      <div class="gas-bars">
+        <div class="gas-bar-item">
+          <div class="gas-bar-label">① 临沂→苏州服务区</div>
+          <div class="gas-bar-track">
+            <div class="gas-bar-fill" style="width: 0%; background: linear-gradient(90deg, #c67b4e, #e09060);" data-width="45%"></div>
+          </div>
+          <div class="gas-bar-value">约 340 km</div>
+        </div>
+        <div class="gas-bar-item">
+          <div class="gas-bar-label">② 服务区→苏州拙政园</div>
+          <div class="gas-bar-track">
+            <div class="gas-bar-fill" style="width: 0%; background: linear-gradient(90deg, #4a7a9b, #60a0c0);" data-width="15%"></div>
+          </div>
+          <div class="gas-bar-value">约 110 km</div>
+        </div>
+        <div class="gas-bar-item">
+          <div class="gas-bar-label">③ 苏州→常熟→乌镇</div>
+          <div class="gas-bar-track">
+            <div class="gas-bar-fill" style="width: 0%; background: linear-gradient(90deg, #5a8a6e, #70b090);" data-width="15%"></div>
+          </div>
+          <div class="gas-bar-value">约 80 km</div>
+        </div>
+        <div class="gas-bar-item">
+          <div class="gas-bar-label">④ 乌镇→临沂（返程）</div>
+          <div class="gas-bar-track">
+            <div class="gas-bar-fill" style="width: 0%; background: linear-gradient(90deg, #b85450, #d07070);" data-width="88%"></div>
+          </div>
+          <div class="gas-bar-value">约 660 km ⚠️</div>
+        </div>
+      </div>
+      <div class="gas-note">
+        ⚠️ <strong>重要提醒</strong>：返程段 660km 超过满油续航（实际约 562km），<strong>务必在途中加油一次</strong>。建议在 G2京沪高速 苏州/无锡段 服务区（如阳澄湖服务区、苏锡常服务区）出高速前加满油，或上高速后第一个服务区加油后再出发。
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon" style="background: var(--accent-light);">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" stroke="var(--accent)" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="var(--accent)" stroke-width="2"/></svg>
+        </div>
+        <div class="stat-value">530<span class="stat-unit"> km</span></div>
+        <div class="stat-label">临沂 → 苏州（高速）</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: var(--blue-light);">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 0 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="stat-value">~562<span class="stat-unit"> km</span></div>
+        <div class="stat-label">实际续航（750×75折）</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: var(--green-light);">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="var(--green)" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="var(--green)" stroke-width="2"/></svg>
+        </div>
+        <div class="stat-value">1,273<span class="stat-unit"> km</span></div>
+        <div class="stat-label">全程总里程</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: var(--red-light);">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01" stroke="var(--red)" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="stat-value">1<span class="stat-unit"> 次</span></div>
+        <div class="stat-label">建议中途加油次数</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- DAY 1 -->
+<section class="section" id="day1">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Day 1 · April 3</div>
+      <h2 class="section-title">出发 · 夜奔江南</h2>
+      <p class="section-desc">从临沂兰山区万科如园出发，沿G2京沪高速一路向南，夜宿高速服务区，4月4日清晨抵达苏州。</p>
+    </div>
+
+    <div class="day-grid">
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-number">DAY<span>01</span></div>
+          <div class="day-title-group">
+            <div class="day-title">4月3日 · 出发与夜间赶路</div>
+            <div class="day-subtitle">临沂 → G2京沪高速 → 服务区过夜</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="time-block">
+            <div class="time-label">18:30</div>
+            <div class="time-title">从万科如园出发</div>
+            <div class="time-desc">收拾好行李，检查车况（胎压、油量），导航设置目的地为苏州。走G2京沪高速向南，经泰安、济南、莱芜（绕城高速）、淄博、潍坊，预计到达苏州约需6-7小时。</div>
+            <div class="tag-list">
+              <span class="tag">G2京沪高速</span>
+              <span class="tag blue">建议2人轮换驾驶</span>
+            </div>
+          </div>
+          <div class="time-block green">
+            <div class="time-label">20:00 — 20:30</div>
+            <div class="time-title">服务区短暂休息</div>
+            <div class="time-desc">行驶约1.5-2小时后，在高速公路服务区短暂休息。推荐：沂南服务区、莒县服务区或费县服务区。下车活动、伸展腿部、上洗手间、补充水分。</div>
+            <div class="tag-list">
+              <span class="tag green">每2小时休息一次</span>
+            </div>
+          </div>
+          <div class="time-block blue">
+            <div class="time-label">22:00 — 23:00</div>
+            <div class="time-title">抵达推荐夜宿服务区</div>
+            <div class="time-desc">推荐选择靠近苏州的高速服务区过夜，方便4日清晨直接进城。</div>
+            <div class="note-box">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
+              <span><strong>推荐：阳澄湖服务区（G2京沪高速1144km处）</strong><br>距离苏州拙政园约40km，设施齐全（有快餐、洗手间、便利店、加油站），环境较好，适合车内过夜休息。</span>
+            </div>
+          </div>
+          <div class="time-block">
+            <div class="time-label">23:00 — 次日 06:00</div>
+            <div class="time-title">服务区车内休息（睡眠）</div>
+            <div class="time-desc">将车停在安全区域，调好空调/暖风（4月初夜间气温约12-16°C），好好休息。高速服务区停车过夜不另收费用，保留好加油/消费小票作为凭证。</div>
+            <div class="tag-list">
+              <span class="tag green">服务区过夜免费</span>
+              <span class="tag blue">记得留好消费凭证</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fuel Tips for Day 1 -->
+      <div class="day-card">
+        <div class="day-header" style="background: linear-gradient(135deg, #1a1814, #2d2820);">
+          <div class="day-number" style="background: #c67b4e;">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" style="color:#fff"><path d="M3 22V8l4-4h6l4 4v14H3zM10 22V14h4v8M8 8h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="day-title-group">
+            <div class="day-title" style="color:#fff;">燃油与续航提醒</div>
+            <div class="day-subtitle" style="color:rgba(255,255,255,0.6);">出发前务必加满油</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="time-block">
+            <div class="time-label">出发前</div>
+            <div class="time-title">出发前将油箱加满</div>
+            <div class="time-desc">出发前在临沂市区将油箱加满（约50-55L），全程行驶约340km到服务区，油量足够。出发前建议检查：<strong>胎压、机油、冷却液、备胎、应急工具</strong>。</div>
+          </div>
+          <div class="time-block green">
+            <div class="time-label">休息时</div>
+            <div class="time-title">到达服务区后确认油量</div>
+            <div class="time-desc">到达阳澄湖服务区后，确认剩余油量。如果续航不足400km，建议在阳澄湖服务区加油站补充燃油（这里油价与市区差别不大），4月4日前往拙政园方向约110km，轻松覆盖。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- DAY 2 -->
+<section class="section" id="day2">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Day 2 · April 4</div>
+      <h2 class="section-title">苏州 · 园林雅韵</h2>
+      <p class="section-desc">清晨从服务区出发前往苏州，上午做古风装造，中午入园游览拙政园，傍晚前往常熟入住果庭酒店。</p>
+    </div>
+
+    <div class="day-grid">
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-number">DAY<span>02</span></div>
+          <div class="day-title-group">
+            <div class="day-title">4月4日 · 苏州拙政园深度游</div>
+            <div class="day-subtitle">上午妆造 → 中午入园 → 傍晚前往常熟</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="time-block">
+            <div class="time-label">06:00</div>
+            <div class="time-title">起床，从服务区出发</div>
+            <div class="time-desc">在阳澄湖服务区洗漱（服务区有公共洗手间和便利店），简单吃点早餐，导航设置"苏州拙政园"出发。</div>
+            <div class="tag-list">
+              <span class="tag blue">服务区→苏州约40km</span>
+            </div>
+          </div>
+          <div class="time-block green">
+            <div class="time-label">07:00 — 08:30</div>
+            <div class="time-title">抵达苏州拙政园附近</div>
+            <div class="time-desc">进入苏州市区，建议在外围停车（苏州古城区对外地车有限行）:</div>
+            <div class="note-box">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
+              <span><strong>推荐停车场：东汇公园换乘停车场</strong><br>导航搜"东汇公园"，位于姑苏区东汇路78号，是苏州最大的换乘停车场，停车后有免费接驳公交到拙政园、苏州博物馆等景点。收费标准约6元/小时，封顶约50元/天。也可选"拙政园南停车场"（百家巷53号），离入口更近，约6元/小时。</span>
+            </div>
+          </div>
+          <div class="time-block green">
+            <div class="time-label">08:30 — 10:30</div>
+            <div class="time-title">前往妆造店做古风装造</div>
+            <div class="time-desc">拙政园周边有多家汉服古风体验店，建议提前预约早上8:30的档期。妆造时间约1-1.5小时，做完装造穿着汉服直接去拙政园，边拍照边游览。</div>
+            <div class="address-card">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
+              <div><strong>推荐店铺：</strong>① 国风古韵汉服体验店（临顿路379号，距拙政园约300m）② 粉黛三千汉服体验馆（姑苏区相门城墙C2栋）<br><strong>必须提前预约 08:30 档</strong>，妆造时间约1-1.5小时，费用约150-300元/人不等</div>
+            </div>
+            <div class="tag-list" style="margin-top:0.75rem;">
+              <span class="tag blue">妆造档期 08:30-10:30</span>
+              <span class="tag green">完成后直接进园拍照</span>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-label">10:45 — 13:00</div>
+            <div class="time-title">拙政园深度游览</div>
+            <div class="time-desc">装造完成后，穿着汉服直接前往拙政园入园（距妆造店很近，步行可达）。拙政园开放时间：7:30-17:30。10:45左右入园，光线开始柔和，拍照效果最佳，且避开了早上团队游客最多的时段。建议游览约2小时，13:00前出园午餐。</div>
+            <div style="background:#f8f6f1;border-radius:12px;padding:1rem;margin-top:0.5rem;">
+              <div style="font-size:0.82rem;font-weight:700;color:var(--accent);margin-bottom:0.5rem;">推荐游览路线（约2-2.5小时）：</div>
+              <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.8;">
+                <strong>入口</strong> → <strong>兰雪堂</strong>（标志性建筑）→ <strong>缀云峰</strong>（假山）→ <strong>芙蓉榭</strong>（荷花池）→ <strong>玉兰堂</strong> → <strong>香洲</strong>（画舫）→ <strong>荷风四面亭</strong>（经典机位）→ <strong>远香堂</strong> → <strong>小飞虹</strong>（水廊/必拍）→ <strong>香洲</strong> → <strong>塔影亭</strong> → <strong>盆景园</strong> → <strong>出园</strong>
+              </div>
+            </div>
+            <div class="tag-list" style="margin-top:0.75rem;">
+              <span class="tag">门票 70元/人（提前网购 60元）</span>
+              <span class="tag green">10:45入园，13:00前出园</span>
+            </div>
+          </div>
+
+          <div class="time-block blue">
+            <div class="time-label">13:00 — 14:00</div>
+            <div class="time-title">午餐（拙政园周边）</div>
+            <div class="time-desc">出园后午餐。拙政园附近餐饮推荐：<br>① <strong>得月楼</strong>（松鹤楼旗下，苏帮菜，人均约100-150元，距拙政园约500m）<br>② <strong>协和菜馆</strong>（老字号苏帮菜，平江路附近，人均约60-80元）<br>③ 平江路小吃街（馄饨、糕团、糖粥等，轻松解决）</div>
+          </div>
+
+          <div class="time-block green">
+            <div class="time-label">14:00 — 15:30</div>
+            <div class="time-title">周边漫步或拍照（可选）</div>
+            <div class="time-desc">午餐后如果还有精力和时间，穿着汉服继续在周边逛逛拍照，氛围感十足：<br>① <strong>平江路历史街区</strong>（免费，古色古香的江南老街，汉服拍照加倍出片）<br>② <strong>苏州博物馆</strong>（免费，建筑大师贝聿铭设计，提前预约）<br>③ <strong>狮子林</strong>（距拙政园约400m，门票30元，假山迷宫有趣）</div>
+          </div>
+
+          <div class="time-block red">
+            <div class="time-label">15:30 — 16:30</div>
+            <div class="time-title">前往常熟，入住果庭酒店</div>
+            <div class="time-desc">从苏州拙政园出发，沿S38常台高速或G15沈海高速，向北前往常熟市，车程约50-60分钟（约60km）。</div>
+            <div class="address-card">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
+              <div>
+                <strong>果庭酒店（常熟市中心琴湖公园店）</strong><br>
+                地址：江苏省苏州市常熟市沙家浜路5号（琴湖公园旁）<br>
+                距离拙政园约60km，自驾约50-60min
+              </div>
+            </div>
+          </div>
+          <div class="time-block">
+            <div class="time-label">17:00 — 20:00</div>
+            <div class="time-title">入住后周边觅食 / 琴湖公园漫步</div>
+            <div class="time-desc">抵达果庭酒店后办理入住，傍晚时分可在酒店周边逛逛琴湖公园散步拍照（4月初傍晚约17:00-18:00光线柔和）。</div>
+          </div>
+          <div class="time-block blue">
+            <div class="time-label">18:00 — 20:00</div>
+            <div class="time-title">晚餐（琴湖公园附近）</div>
+            <div class="time-desc">晚餐推荐（距酒店步行10分钟内）：<br>① <strong>采渔轩·海鲜融合菜</strong>（琴湖溪里，近琴湖，环境好）<br>② <strong>悦己庭荟</strong>（高端融合菜，包厢有庭院）<br>③ <strong>壹角烧肉酒场</strong>（琴湖溪里，日式烤肉）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- DAY 3 -->
+<section class="section" id="day3">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Day 3 · April 5</div>
+      <h2 class="section-title">乌镇 · 枕水人家</h2>
+      <p class="section-desc">上午在常熟自由活动（琴湖公园或附近景点），下午驱车前往乌镇西栅，夜游水乡夜景，宿云逸别院。</p>
+    </div>
+
+    <div class="day-grid">
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-number">DAY<span>03</span></div>
+          <div class="day-title-group">
+            <div class="day-title">4月5日 · 乌镇西栅全天</div>
+            <div class="day-subtitle">常熟周边游玩 → 乌镇西栅 → 夜游水乡</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="time-block">
+            <div class="time-label">08:00 — 09:00</div>
+            <div class="time-title">睡到自然醒 / 琴湖公园晨练</div>
+            <div class="time-desc">4月初春，琴湖公园清晨空气清新，湖边漫步非常舒适。酒店含早餐的话可在酒店用餐，之后办理退房。</div>
+            <div class="tag-list">
+              <span class="tag green">琴湖公园免费开放</span>
+            </div>
+          </div>
+          <div class="time-block green">
+            <div class="time-label">09:00 — 11:30</div>
+            <div class="time-title">常熟自由活动（可选）</div>
+            <div class="time-desc">如果退房较早，可以选择游玩常熟以下景点（均距果庭酒店较近）：</div>
+            <div style="background:#f8f6f1;border-radius:12px;padding:1rem;margin-top:0.5rem;">
+              <div style="font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;">常熟周边景点推荐：</div>
+              <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.8;">
+                ① <strong>虞山国家森林公园</strong>（距酒店约6km，车程15min，4A级，山林景观，春季踏青好去处）<br>
+                ② <strong>尚湖风景区</strong>（距酒店约8km，车程20min，太湖姐妹湖，风景秀丽）<br>
+                ③ <strong>方塔园</strong>（常熟市区，免费/低价，宋代古迹，非常适合拍照）<br>
+                ④ <strong>琴湖公园</strong>（酒店旁边，环湖散步、拍照，4月初樱花盛开）
+              </div>
+            </div>
+          </div>
+          <div class="time-block blue">
+            <div class="time-label">12:00 — 12:30</div>
+            <div class="time-title">出发前往乌镇</div>
+            <div class="time-desc">办理退房，导航设置"乌镇西栅景区"，走G15W常台高速→S12申嘉湖高速，车程约60-90分钟（约80km）。</div>
+            <div class="tag-list">
+              <span class="tag blue">约80km，约1-1.5h</span>
+            </div>
+          </div>
+          <div class="time-block">
+            <div class="time-label">13:30 — 14:30</div>
+            <div class="time-title">抵达乌镇，前往云逸别院办理入住</div>
+            <div class="time-desc">先去住宿地点放行李。云逸别院（丽呈别院·云逸）位于乌镇子夜路/秋收路633号，靠近乌镇古镇主景区。</div>
+            <div class="address-card">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
+              <div>
+                <strong>丽呈别院·云逸（乌镇店）</strong><br>
+                地址：浙江省嘉兴市桐乡市乌镇秋收路633号<br>
+                停车：酒店有免费停车位
+              </div>
+            </div>
+          </div>
+          <div class="time-block green">
+            <div class="time-label">14:30 — 15:15</div>
+            <div class="time-title">午餐（乌镇景区周边）</div>
+            <div class="time-desc">乌镇美食推荐：<br>① <strong>书生羊肉面</strong>（乌镇特色，红烧羊肉面，人均约30-40元）<br>② <strong>锦记糕点铺</strong>（定胜糕、桂花糕，步行可至）<br>③ <strong>滋啦啦油煎铺</strong>（萝卜丝饼、春卷，乌镇特色小吃）</div>
+          </div>
+          <div class="time-block blue">
+            <div class="time-label">15:15 — 20:00</div>
+            <div class="time-title">西栅景区深度游览（下午+夜游）</div>
+            <div class="time-desc">西栅是乌镇最完整的古镇区域，4月春季游客相对清明假期有所减少，是游览好时机。门票：150元/人（建议提前在官方App或携程购买，可省排队时间）。</div>
+            <div style="background:#f8f6f1;border-radius:12px;padding:1rem;margin-top:0.5rem;">
+              <div style="font-size:0.82rem;font-weight:700;color:var(--accent);margin-bottom:0.5rem;">西栅推荐游览顺序（下午→傍晚→夜晚）：</div>
+              <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.9;">
+                <strong>15:15</strong> 景区入口 → <strong>草木本色染坊</strong>（蓝印花布，必拍）→ <br>
+                <strong>15:45</strong> <strong>西栅老街</strong>漫步（石板路、古桥、老建筑）→ <br>
+                <strong>16:15</strong> <strong>三寸金莲馆</strong> → <strong>乌镇大剧院</strong>（外观打卡）→ <br>
+                <strong>16:30</strong> <strong>木心美术馆</strong>（需另购票20元，建筑与艺术双重享受，强烈推荐）→ <br>
+                <strong>17:00</strong> <strong>水上集市</strong> → <strong>叙昌酱园</strong>（满院子酱缸，特色）→ <br>
+                <strong>17:30</strong> <strong>白莲塔</strong>（登塔观景，傍晚光线绝美）→ <br>
+                <strong>18:00</strong> 找一家沿河茶馆/咖啡馆，<strong>等待西栅亮灯</strong>（约18:30-19:00亮灯）→ <br>
+                <strong>18:30-20:00</strong> <strong>夜游西栅</strong>（灯笼、水乡夜景，打铁花表演）→ <br>
+                <strong>20:00</strong> 出景区，回云逸别院休息
+              </div>
+            </div>
+            <div class="tag-list" style="margin-top:0.75rem;">
+              <span class="tag">门票 150元/人</span>
+              <span class="tag green">木心美术馆另加 20元</span>
+              <span class="tag blue">建议提前网购门票</span>
+            </div>
+          </div>
+          <div class="time-block">
+            <div class="time-label">20:30 — 22:00</div>
+            <div class="time-title">回民宿休息 / 乌镇夜景散步</div>
+            <div class="time-desc">西栅夜景非常美，也可以继续在景区外沿河漫步。乌镇夜景灯光柔和，小桥流水，灯笼点点。回民宿好好休息，准备第二天的返程。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- DAY 4 -->
+<section class="section" id="day4">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Day 4 · April 6</div>
+      <h2 class="section-title">乌镇周边 · 返程回家</h2>
+      <p class="section-desc">上午在乌镇附近自由活动，午后出发返程，傍晚回到临沂万科如园。全程约660km，记得中途加油一次！</p>
+    </div>
+
+    <div class="day-grid">
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-number">DAY<span>04</span></div>
+          <div class="day-title-group">
+            <div class="day-title">4月6日 · 乌镇周边 + 返程</div>
+            <div class="day-subtitle">乌镇附近 → 返程临沂（中途加油）</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="time-block">
+            <div class="time-label">08:00 — 09:00</div>
+            <div class="time-title">睡到自然醒 / 民宿周边早餐</div>
+            <div class="time-desc">不赶早，享受乌镇清晨的宁静。乌镇清晨7-8点的石板路几乎无人，是拍照的黄金时间。民宿周边有早餐店，豆浆、油条、馄饨等。</div>
+          </div>
+          <div class="time-block green">
+            <div class="time-label">09:00 — 11:30</div>
+            <div class="time-title">乌镇周边自由活动</div>
+            <div class="time-desc">选择一：<strong>东栅景区</strong>（如果4日西栅没玩够，东栅110元/人，古建筑+民俗表演，与西栅风格不同）；<br><br>选择二：<strong>乌镇互联网国际会展中心</strong>（免费，乌镇世界互联网大会举办地，建筑很有设计感，适合拍照打卡）<br><br>选择三：<strong>子夜路老街</strong>（免费，悠闲漫步，吃当地早点）</div>
+          </div>
+          <div class="time-block blue">
+            <div class="time-label">11:30 — 12:00</div>
+            <div class="time-title">退房，出发返程</div>
+            <div class="time-desc">办理退房，整理行李。出发前再次确认：油量是否足够（约660km）。如果油量不足，先在乌镇附近加油站加油后再上高速。</div>
+            <div class="note-box">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
+              <span><strong>⚠️ 返程加油提醒：</strong>乌镇→临沂约660km，建议在高速入口第一个服务区（如G1521上的嘉兴服务区）就把油箱加满。途中可选G2京沪高速上的某服务区（如山东境内的德州服务区或济南服务区）再次补油，确保安全到家。</span>
+            </div>
+          </div>
+          <div class="time-block">
+            <div class="time-label">12:00 — 13:00</div>
+            <div class="time-title">午餐（途中服务区）</div>
+            <div class="time-desc">午餐推荐在高速服务区解决，或提前带些干粮。返程建议走：G1521/G15W→G2京沪高速方向一路向北。</div>
+          </div>
+          <div class="time-block red">
+            <div class="time-label">12:00 — 19:00</div>
+            <div class="time-title">返程（约660km，预计7-8小时）</div>
+            <div class="time-desc">走G2京沪高速返程，经过嘉兴、苏州、无锡、常州、镇江、南京、蚌埠、宿州、徐州，最后回到临沂。建议每2小时在服务区休息一次。下午5-6点之间可能遇到返程高峰，注意安全驾驶。</div>
+            <div class="tag-list">
+              <span class="tag red">⚠️ 预计傍晚到家</span>
+              <span class="tag">全程约660km</span>
+              <span class="tag blue">建议2人轮换驾驶</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- PACKING LIST -->
+<section class="section" id="packing">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Packing List</div>
+      <h2 class="section-title">行李清单</h2>
+      <p class="section-desc">四天三晚江南行，精简打包，轻装上阵。以下清单分类整理，建议出发前逐一核对。</p>
+    </div>
+
+    <div class="packing-grid">
+      <div class="packing-cat">
+        <div class="packing-cat-title">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="var(--accent)" stroke-width="2"/></svg>
+          证件与票券
+        </div>
+        <div class="packing-item"><div class="packing-check"></div>身份证（必带）</div>
+        <div class="packing-item"><div class="packing-check"></div>驾驶证 / 行驶证</div>
+        <div class="packing-item"><div class="packing-check"></div>手机（充满电）</div>
+        <div class="packing-item"><div class="packing-check"></div>笨园/乌镇门票（提前电子票）</div>
+        <div class="packing-item"><div class="packing-check"></div>酒店预订确认单（电子版）</div>
+        <div class="packing-item"><div class="packing-check"></div>银行卡 / 少量现金</div>
+      </div>
+
+      <div class="packing-cat">
+        <div class="packing-cat-title">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" stroke="var(--green)" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="var(--green)" stroke-width="2"/></svg>
+          衣物（4月初江南气温约12-22°C）
+        </div>
+        <div class="packing-item"><div class="packing-check"></div>换洗衣物 2-3套</div>
+        <div class="packing-item"><div class="packing-check"></div>外套 1件（早晚温差大，备厚外套）</div>
+        <div class="packing-item"><div class="packing-check"></div>长裤/长裙（园林蚊虫+防晒）</div>
+        <div class="packing-item"><div class="packing-check"></div>舒适运动鞋（走路多，必备）</div>
+        <div class="packing-item"><div class="packing-check"></div>拖鞋（酒店用）</div>
+        <div class="packing-item"><div class="packing-check"></div>遮阳帽 / 墨镜（防晒）</div>
+      </div>
+
+      <div class="packing-cat">
+        <div class="packing-cat-title">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="var(--red)" stroke-width="2"/><line x1="12" y1="9" x2="12" y2="13" stroke="var(--red)" stroke-width="2"/><line x1="12" y1="17" x2="12.01" y2="17" stroke="var(--red)" stroke-width="2"/></svg>
+          健康与安全
+        </div>
+        <div class="packing-item"><div class="packing-check"></div>常备药（肠胃药、创可贴、晕车药）</div>
+        <div class="packing-item"><div class="packing-check"></div>防晒霜 SPF30+（4月紫外线增强）</div>
+        <div class="packing-item"><div class="packing-check"></div>驱蚊液（园林蚊虫较多）</div>
+        <div class="packing-item"><div class="packing-check"></div>纸巾 / 湿巾</div>
+        <div class="packing-item"><div class="packing-check"></div>充电宝（20000mAh以内，可带上机）</div>
+        <div class="packing-item"><div class="packing-check"></div>保温杯（服务区/景区喝热水）</div>
+      </div>
+
+      <div class="packing-cat">
+        <div class="packing-cat-title">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="var(--blue)" stroke-width="2"/></svg>
+          车内用品
+        </div>
+        <div class="packing-item"><div class="packing-check"></div>车载充电器（点烟器+USB-C）</div>
+        <div class="packing-item"><div class="packing-check"></div>手机支架（导航用）</div>
+        <div class="packing-item"><div class="packing-check"></div>车载垃圾袋</div>
+        <div class="packing-item"><div class="packing-check"></div>毛毯/薄被（服务区过夜用）</div>
+        <div class="packing-item"><div class="packing-check"></div>高热量零食（巧克力、坚果）</div>
+        <div class="packing-item"><div class="packing-check"></div>矿泉水 2-3瓶</div>
+        <div class="packing-item"><div class="packing-check"></div>换洗衣物小包（服务区简单换洗）</div>
+      </div>
+
+      <div class="packing-cat">
+        <div class="packing-cat-title">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="var(--accent)" stroke-width="2"/><circle cx="8.5" cy="8.5" r="1.5" stroke="var(--accent)" stroke-width="2"/><polyline points="21 15 16 10 5 21" stroke="var(--accent)" stroke-width="2"/></svg>
+          摄影与拍照
+        </div>
+        <div class="packing-item"><div class="packing-check"></div>手机 / 相机</div>
+        <div class="packing-item"><div class="packing-check"></div>自拍杆（园林/古镇合影）</div>
+        <div class="packing-item"><div class="packing-check"></div>汉服装造（可在苏州现场租）</div>
+        <div class="packing-item"><div class="packing-check"></div>小道具（团扇、油纸伞，古镇拍照加分）</div>
+        <div class="packing-item"><div class="packing-check"></div>备用电池 / 存储卡</div>
+      </div>
+
+      <div class="packing-cat">
+        <div class="packing-cat-title">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12" stroke="var(--accent)" stroke-width="2"/><rect x="2" y="7" width="20" height="5" stroke="var(--accent)" stroke-width="2"/><line x1="12" y1="22" x2="12" y2="7" stroke="var(--accent)" stroke-width="2"/></svg>
+          服务区过夜备品
+        </div>
+        <div class="packing-item"><div class="packing-check"></div>颈枕（长途必备）</div>
+        <div class="packing-item"><div class="packing-check"></div>眼罩</div>
+        <div class="packing-item"><div class="packing-check"></div>耳塞（防服务区噪音）</div>
+        <div class="packing-item"><div class="packing-check"></div>便携洗漱包（牙刷+牙膏+毛巾）</div>
+        <div class="packing-item"><div class="packing-check"></div>湿纸巾（清洁用）</div>
+        <div class="packing-item"><div class="packing-check"></div>垃圾袋（保持车内整洁）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- TIPS -->
+<section class="section" id="tips">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Tips & Reminders</div>
+      <h2 class="section-title">实用贴士</h2>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon" style="background: var(--accent-light);">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" stroke="var(--accent)" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="var(--accent)" stroke-width="2"/></svg>
+        </div>
+        <div class="tip-title">拙政园预约提醒</div>
+        <div class="tip-desc">4月是苏州旅游旺季，笨园需提前预约购票。建议提前3-5天在"苏州笨园"官方微信公众号或携程购买门票，避免现场排队。</div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon" style="background: var(--blue-light);">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 0 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="tip-title">燃油加油节点</div>
+        <div class="tip-desc"><strong>出发前：</strong>临沂市区加满油（约55L）。<br><strong>Day2早：</strong>阳澄湖服务区确认油量。<br><strong>Day4出发：</strong>乌镇附近加满油。<br><strong>返程中途：</strong>根据油耗补充燃油，确保不抛锚。</div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon" style="background: var(--green-light);">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="tip-title">苏州古城区停车</div>
+        <div class="tip-desc">苏州古城区（笨园、博物馆附近）外地车限行。推荐停放在<strong>东汇公园换乘停车场</strong>（有免费接驳公交），或<strong>拙政园南停车场</strong>（百家巷），费用约6元/小时。</div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon" style="background: var(--red-light);">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="var(--red)" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="12" stroke="var(--red)" stroke-width="2"/><line x1="12" y1="16" x2="12.01" y2="16" stroke="var(--red)" stroke-width="2"/></svg>
+        </div>
+        <div class="tip-title">服务区过夜安全</div>
+        <div class="tip-desc">选择明亮、有监控的服务区停车区；不要在车内使用明火或炭火取暖；贵重物品随身携带或锁入后备箱；离开车辆前确认车门锁好。</div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon" style="background: var(--accent-light);">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="var(--accent)" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="var(--accent)" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="var(--accent)" stroke-width="2"/><line x1="3" y1="10" x2="21" y2="10" stroke="var(--accent)" stroke-width="2"/></svg>
+        </div>
+        <div class="tip-title">拙政园最佳游览时间</div>
+        <div class="tip-desc">4月初是笨园最美季节。避开11:00-14:00高峰时段（团队游客多），建议8:30开园就到，或下午15:00后入园，光线柔和拍照更美。</div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon" style="background: var(--blue-light);">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="var(--blue)" stroke-width="2"/><polyline points="14 2 14 8 20 8" stroke="var(--blue)" stroke-width="2"/></svg>
+        </div>
+        <div class="tip-title">乌镇西栅建议游玩时长</div>
+        <div class="tip-desc">西栅很大，建议留出<strong>4-6小时</strong>。下午入场可以同时看到白天和夜景，物超所值。木心美术馆需另购门票20元，值得一看。</div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon" style="background: var(--green-light);">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="var(--green)" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="var(--green)" stroke-width="2"/></svg>
+        </div>
+        <div class="tip-title">常熟住宿亮点</div>
+        <div class="tip-desc">果庭酒店位于常熟琴湖公园旁，4月初湖边樱花盛开，傍晚湖景很美。如果到得早，可以先环湖散步拍照，再去附近餐厅用晚餐。</div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-icon" style="background: var(--red-light);">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="var(--red)" stroke-width="2"/><polyline points="12 6 12 12 16 14" stroke="var(--red)" stroke-width="2"/></svg>
+        </div>
+        <div class="tip-title">疲劳驾驶警示</div>
+        <div class="tip-desc">全程约1273km，建议<strong>每连续驾驶2小时休息15-20分钟</strong>。4月4日返程段660km是挑战，建议2人轮换驾驶，保证安全。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>江南踏春季 · 四日自驾游攻略 &nbsp;|&nbsp; 2026年4月3日—6日 &nbsp;|&nbsp; 临沂 ⇄ 苏州 ⇄ 常熟 ⇄ 乌镇</p>
+  <p style="margin-top:0.5rem;opacity:0.6;">祝旅途愉快，一路平安</p>
+</footer>
+
+<script>
+  // Smooth scroll
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 70;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  // Active nav on scroll
+  const sections = ['overview','stats','day1','day2','day3','day4','packing','tips'];
+  const navItems = document.querySelectorAll('.nav-item');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 100) current = id;
+    });
+    navItems.forEach(item => {
+      item.classList.remove('active');
+      if (item.getAttribute('onclick')?.includes(current)) item.classList.add('active');
+    });
+  });
+
+  // Animate gas bars on scroll
+  const gasBars = document.querySelectorAll('.gas-bar-fill');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        gasBars.forEach(bar => {
+          const width = bar.getAttribute('data-width');
+          bar.style.width = width;
+        });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const gasSection = document.querySelector('.gas-section');
+  if (gasSection) observer.observe(gasSection);
+
+  // Fade in animation
+  const fadeEls = document.querySelectorAll('.day-card, .stat-card, .tip-card, .packing-cat, .route-card');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => { entry.target.classList.add('visible'); }, i * 80);
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => { el.classList.add('fade-in'); fadeObserver.observe(el); });
+</script>
+
+</body>
+</html>
